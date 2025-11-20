@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { postService } from '../services';
 import Header from '../components/common/Header';
@@ -10,25 +10,22 @@ function FeedPage() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
 
-  useEffect(() => {
-    loadPosts();
-  }, []);
-
-  const loadPosts = async () => {
+  const loadPosts = useCallback(async () => {
     try {
-      const response = await postService.getFeed(page);
+      const response = await postService.getFeed(1);
       setPosts(response.data || []);
-      setHasMore(response.current_page < response.last_page);
     } catch (err) {
       setError('Ошибка загрузки постов');
       console.error(err);
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    loadPosts();
+  }, [loadPosts]);
 
   const handleLikeToggle = (postId, result) => {
     setPosts((prevPosts) =>
