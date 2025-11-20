@@ -25,7 +25,7 @@ function UserSuggestions() {
   if (loading) {
     return (
       <div className="card p-6 mb-6">
-        <h3 className="font-semibold text-gray-900 mb-4">Возможно знакомы</h3>
+        <h3 className="font-semibold text-gray-900 mb-4">Возможно вам знакомы</h3>
         <div className="flex justify-center py-4">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
         </div>
@@ -39,8 +39,8 @@ function UserSuggestions() {
 
   return (
     <div className="card p-6 mb-6">
-      <h3 className="font-semibold text-gray-900 mb-4">Возможно знакомы</h3>
-      <div className="space-y-4">
+      <h3 className="font-semibold text-gray-900 mb-4">Возможно вам знакомы</h3>
+      <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
         {users.map((user) => {
           const avatarUrl = user.avatar ? getImageUrl(user.avatar) : null;
           
@@ -48,48 +48,43 @@ function UserSuggestions() {
             <Link
               key={user.id}
               to={`/profile/${user.id}`}
-              className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition group"
+              className="flex flex-col items-center flex-shrink-0 group"
             >
-              {avatarUrl ? (
-                <img
-                  src={avatarUrl}
-                  alt={user.name}
-                  className="w-12 h-12 rounded-full object-cover border-2 border-gray-200 group-hover:border-primary-300 transition"
-                />
-              ) : (
-                <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center border-2 border-gray-200 group-hover:border-primary-300 transition">
-                  <span className="text-primary-600 font-bold text-lg">
-                    {user.name?.charAt(0).toUpperCase()}
-                  </span>
-                </div>
-              )}
-              
-              <div className="flex-1 min-w-0">
-                <p className="font-medium text-gray-900 truncate group-hover:text-primary-600 transition">
-                  {user.name}
-                </p>
-                <p className="text-sm text-gray-500 truncate">
-                  @{user.email?.split('@')[0]}
-                </p>
+              <div className="relative mb-2">
+                {avatarUrl ? (
+                  <img
+                    src={avatarUrl}
+                    alt={user.name}
+                    className="w-16 h-16 rounded-full object-cover border-3 border-primary-200 group-hover:border-primary-400 transition ring-2 ring-white"
+                  />
+                ) : (
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center border-3 border-primary-200 group-hover:border-primary-400 transition ring-2 ring-white shadow-md">
+                    <span className="text-white font-bold text-xl">
+                      {user.name?.charAt(0).toUpperCase()}
+                    </span>
+                  </div>
+                )}
               </div>
               
-              <svg
-                className="w-5 h-5 text-gray-400 group-hover:text-primary-600 transition"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+              <div className="text-center max-w-[80px]">
+                <p className="text-xs font-medium text-gray-900 truncate group-hover:text-primary-600 transition">
+                  {user.name}
+                </p>
+              </div>
             </Link>
           );
         })}
       </div>
+      
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 }
