@@ -25,7 +25,9 @@ export const formatPoints = (points) => {
 export const getImageUrl = (path) => {
   if (!path) return null;
   if (path.startsWith('http')) return path;
-  return `http://localhost:8000/storage/${path}`;
+  const apiUrl = process.env.REACT_APP_API_URL || 'https://klipus.ru/api';
+  const baseUrl = apiUrl.replace('/api', '');
+  return `${baseUrl}/storage/${path}`;
 };
 
 export const truncateText = (text, maxLength) => {

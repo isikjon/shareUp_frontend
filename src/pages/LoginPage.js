@@ -26,17 +26,17 @@ function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-blue-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4">
       <div className="max-w-md w-full">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-primary-600 mb-2">ShareUp</h1>
-          <p className="text-gray-600">Добро пожаловать обратно!</p>
+        <div className="text-center mb-8 animate-fadeIn">
+          <h1 className="text-5xl font-bold gradient-text mb-3">ShareUp</h1>
+          <p className="text-gray-600 text-lg">Добро пожаловать обратно!</p>
         </div>
 
-        <div className="card p-8">
+        <div className="card p-8 animate-slideIn">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Email или телефон
               </label>
               <input
@@ -45,12 +45,13 @@ function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="input-field"
                 placeholder="example@mail.com"
+                autoComplete="username"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Пароль
               </label>
               <input
@@ -59,12 +60,13 @@ function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 className="input-field"
                 placeholder="••••••••"
+                autoComplete="current-password"
                 required
               />
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
+              <div className="bg-red-50 border-2 border-red-200 text-red-600 px-4 py-3 rounded-xl text-sm font-medium animate-fadeIn">
                 {error}
               </div>
             )}
@@ -81,7 +83,7 @@ function LoginPage() {
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               Нет аккаунта?{' '}
-              <Link to="/register" className="text-primary-600 hover:text-primary-700 font-medium">
+              <Link to="/register" className="text-blue-600 hover:text-blue-700 font-semibold transition-colors">
                 Зарегистрироваться
               </Link>
             </p>
@@ -93,4 +95,3 @@ function LoginPage() {
 }
 
 export default LoginPage;
-
