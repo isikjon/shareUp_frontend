@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { postService } from '../services';
 import Header from '../components/common/Header';
@@ -117,9 +118,11 @@ function FeedPage() {
                   </span>
                 </div>
 
-                <button className="w-full btn-primary">
-                  Создать пост
-                </button>
+                <Link to="/create-post" className="block">
+                  <button className="w-full btn-primary">
+                    Создать пост
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

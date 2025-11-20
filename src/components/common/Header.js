@@ -22,7 +22,7 @@ function Header() {
             <h1 className="text-2xl font-bold text-primary-600">ShareUp</h1>
           </Link>
 
-          <nav className="flex items-center space-x-6">
+          <nav className="flex items-center space-x-4 sm:space-x-6">
             <Link
               to="/feed"
               className="text-gray-700 hover:text-primary-600 font-medium transition"
@@ -30,14 +30,23 @@ function Header() {
               Лента
             </Link>
             <Link
-              to="/points"
-              className="text-gray-700 hover:text-primary-600 font-medium transition"
+              to="/create-post"
+              className="hidden sm:block text-gray-700 hover:text-primary-600 font-medium transition"
             >
-              Поинты
+              Создать
+            </Link>
+            <Link
+              to="/notifications"
+              className="relative text-gray-700 hover:text-primary-600 transition"
+              title="Уведомления"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
             </Link>
             
             <div className="relative group">
-              <button className="flex items-center space-x-3 hover:opacity-80 transition">
+              <button className="flex items-center space-x-2 hover:opacity-80 transition">
                 {avatarUrl ? (
                   <img
                     src={avatarUrl}
@@ -58,10 +67,16 @@ function Header() {
 
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200">
                 <Link
-                  to="/profile/me"
+                  to={`/profile/${user?.id}`}
                   className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-t-lg transition"
                 >
                   Мой профиль
+                </Link>
+                <Link
+                  to="/points"
+                  className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition"
+                >
+                  Поинты
                 </Link>
                 {user?.is_admin && (
                   <Link

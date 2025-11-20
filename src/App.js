@@ -6,6 +6,11 @@ import { AdminRoute } from './components/common/AdminRoute';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import FeedPage from './pages/FeedPage';
+import ProfilePage from './pages/ProfilePage';
+import EditProfilePage from './pages/EditProfilePage';
+import CreatePostPage from './pages/CreatePostPage';
+import PointsPage from './pages/PointsPage';
+import NotificationsPage from './pages/NotificationsPage';
 
 function App() {
   return (
@@ -30,16 +35,25 @@ function App() {
               path="/profile/:id"
               element={
                 <PrivateRoute>
-                  <div>Profile Page</div>
+                  <ProfilePage />
                 </PrivateRoute>
               }
             />
             
             <Route
-              path="/profile/me"
+              path="/profile/edit"
               element={
                 <PrivateRoute>
-                  <div>My Profile Page</div>
+                  <EditProfilePage />
+                </PrivateRoute>
+              }
+            />
+            
+            <Route
+              path="/create-post"
+              element={
+                <PrivateRoute>
+                  <CreatePostPage />
                 </PrivateRoute>
               }
             />
@@ -57,7 +71,16 @@ function App() {
               path="/points"
               element={
                 <PrivateRoute>
-                  <div>Points Page</div>
+                  <PointsPage />
+                </PrivateRoute>
+              }
+            />
+            
+            <Route
+              path="/notifications"
+              element={
+                <PrivateRoute>
+                  <NotificationsPage />
                 </PrivateRoute>
               }
             />
