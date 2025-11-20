@@ -12,6 +12,9 @@ export const API_ENDPOINTS = {
     UPDATE: '/profile/update',
     AVATAR: '/profile/avatar',
   },
+  USERS: {
+    SUGGESTIONS: '/users/suggestions',
+  },
   POSTS: {
     LIST: '/posts',
     CREATE: '/posts',

@@ -22,5 +22,10 @@ export const profileService = {
     });
     return response.data;
   },
+
+  getSuggestedUsers: async () => {
+    const response = await axiosInstance.get(API_ENDPOINTS.USERS.SUGGESTIONS);
+    return response.data;
+  },
 };
 

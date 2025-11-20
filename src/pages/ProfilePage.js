@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { profileService, postService } from '../services';
 import Header from '../components/common/Header';
@@ -9,7 +9,6 @@ import { getImageUrl } from '../utils/helpers';
 function ProfilePage() {
   const { id } = useParams();
   const { user: currentUser } = useAuth();
-  const navigate = useNavigate();
   const [profile, setProfile] = useState(null);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,6 +18,7 @@ function ProfilePage() {
 
   useEffect(() => {
     loadProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const loadProfile = async () => {
