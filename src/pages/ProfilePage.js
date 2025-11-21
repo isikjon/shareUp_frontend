@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { profileService, postService } from '../services';
 import Header from '../components/common/Header';
+import { PageTitle } from '../components/common/PageTitle';
 import PostCard from '../components/PostCard';
 import { getImageUrl } from '../utils/helpers';
 
@@ -39,6 +40,7 @@ function ProfilePage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
+        <PageTitle title="Профиль" />
         <Header />
         <div className="flex justify-center py-12">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
@@ -50,6 +52,7 @@ function ProfilePage() {
   if (error) {
     return (
       <div className="min-h-screen bg-gray-50">
+        <PageTitle title="Профиль" />
         <Header />
         <div className="max-w-4xl mx-auto px-4 py-8">
           <div className="card p-6 text-center text-red-600">{error}</div>
@@ -62,6 +65,7 @@ function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <PageTitle title={profile?.name || 'Профиль'} />
       <Header />
 
       <div className="max-w-4xl mx-auto px-4 py-8">

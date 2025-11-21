@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { notificationService } from '../services';
+import { useNotifications } from '../hooks/useNotifications';
 import { getImageUrl } from '../utils/helpers';
 import Header from '../components/common/Header';
+import { PageTitle } from '../components/common/PageTitle';
 
 function NotificationsPage() {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const { refreshCount } = useNotifications();
 
   useEffect(() => {
     loadNotifications();
@@ -29,6 +32,7 @@ function NotificationsPage() {
       setNotifications((prev) =>
         prev.map((n) => (n.id === notificationId ? { ...n, is_read: true } : n))
       );
+      refreshCount();
     } catch (err) {
       console.error('Error marking notification as read:', err);
     }
@@ -38,6 +42,7 @@ function NotificationsPage() {
     try {
       await notificationService.markAllAsRead();
       setNotifications((prev) => prev.map((n) => ({ ...n, is_read: true })));
+      refreshCount();
     } catch (err) {
       console.error('Error marking all as read:', err);
     }
@@ -47,6 +52,7 @@ function NotificationsPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      <PageTitle title="Уведомления" />
       <Header />
 
       <div className="max-w-2xl mx-auto px-4 py-8">

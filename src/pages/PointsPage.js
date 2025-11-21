@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/common/Header';
+import { PageTitle } from '../components/common/PageTitle';
 import { useAuth } from '../context/AuthContext';
 
 function PointsPage() {
@@ -8,6 +9,7 @@ function PointsPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      <PageTitle title="Поинты" />
       <Header />
 
       <div className="max-w-4xl mx-auto px-4 py-8">

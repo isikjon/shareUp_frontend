@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { profileService } from '../services';
 import Header from '../components/common/Header';
+import { PageTitle } from '../components/common/PageTitle';
 import { getImageUrl } from '../utils/helpers';
 
 function EditProfilePage() {
@@ -66,6 +67,7 @@ function EditProfilePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <PageTitle title="Редактировать профиль" />
       <Header />
 
       <div className="max-w-2xl mx-auto px-4 py-8">

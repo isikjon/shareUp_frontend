@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { PageTitle } from '../components/common/PageTitle';
 
 function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -52,7 +53,9 @@ function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4 py-12">
+    <>
+      <PageTitle title="Регистрация" />
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4 py-12">
       <div className="max-w-md w-full">
         <div className="text-center mb-8 animate-fadeIn">
           <h1 className="text-5xl font-bold gradient-text mb-3">ShareUp</h1>
@@ -151,6 +154,7 @@ function RegisterPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

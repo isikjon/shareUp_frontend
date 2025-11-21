@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { postService } from '../services';
 import Header from '../components/common/Header';
+import { PageTitle } from '../components/common/PageTitle';
 
 function CreatePostPage() {
   const navigate = useNavigate();
@@ -69,6 +70,7 @@ function CreatePostPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      <PageTitle title="Создать пост" />
       <Header />
 
       <div className="max-w-2xl mx-auto px-4 py-8">

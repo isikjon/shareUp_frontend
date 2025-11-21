@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { PageTitle } from '../components/common/PageTitle';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -26,7 +27,9 @@ function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4">
+    <>
+      <PageTitle title="Вход" />
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4">
       <div className="max-w-md w-full">
         <div className="text-center mb-8 animate-fadeIn">
           <h1 className="text-5xl font-bold gradient-text mb-3">ShareUp</h1>
@@ -91,6 +94,7 @@ function LoginPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

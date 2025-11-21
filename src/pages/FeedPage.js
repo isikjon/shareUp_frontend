@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { postService } from '../services';
 import Header from '../components/common/Header';
+import { PageTitle } from '../components/common/PageTitle';
 import PostCard from '../components/PostCard';
 import UserSuggestions from '../components/UserSuggestions';
 import { getImageUrl } from '../utils/helpers';
@@ -37,6 +38,7 @@ function FeedPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <PageTitle title="Лента" />
       <Header />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
