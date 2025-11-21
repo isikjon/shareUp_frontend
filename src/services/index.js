@@ -5,4 +5,5 @@ export { commentService } from './commentService';
 export { profileService } from './profileService';
 export { pointService } from './pointService';
 export { adminService } from './adminService';
+export { notificationService } from './notificationService';
 

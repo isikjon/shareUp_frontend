@@ -29,14 +29,8 @@ function FeedPage() {
     loadPosts();
   }, [loadPosts]);
 
-  const handleLikeToggle = (postId, result) => {
-    setPosts((prevPosts) =>
-      prevPosts.map((post) =>
-        post.id === postId
-          ? { ...post, isLiked: result.liked, likes_count: result.likes_count }
-          : post
-      )
-    );
+  const handleDeletePost = (postId) => {
+    setPosts((prevPosts) => prevPosts.filter((post) => post.id !== postId));
   };
 
   const avatarUrl = user?.avatar ? getImageUrl(user.avatar) : null;
@@ -84,7 +78,7 @@ function FeedPage() {
                   <PostCard
                     key={post.id}
                     post={post}
-                    onLikeToggle={handleLikeToggle}
+                    onDelete={handleDeletePost}
                   />
                 ))}
               </div>

@@ -15,20 +15,24 @@ export const API_ENDPOINTS = {
   USERS: {
     SUGGESTIONS: '/users/suggestions',
   },
-  POSTS: {
-    LIST: '/posts',
+  POST: {
+    FEED: (page = 1) => `/posts?page=${page}`,
     CREATE: '/posts',
     SHOW: (id) => `/posts/${id}`,
     DELETE: (id) => `/posts/${id}`,
-    USER_POSTS: (userId) => `/posts/user/${userId}`,
+    USER: (userId) => `/posts/user/${userId}`,
+    LIKE: (postId) => `/likes/${postId}`,
   },
-  LIKES: {
-    TOGGLE: (postId) => `/likes/${postId}`,
-  },
-  COMMENTS: {
-    LIST: (postId) => `/comments/post/${postId}`,
-    CREATE: (postId) => `/comments/post/${postId}`,
+  COMMENT: {
+    POST: (postId) => `/comments/post/${postId}`,
     DELETE: (id) => `/comments/${id}`,
+  },
+  NOTIFICATION: {
+    ALL: '/notifications',
+    UNREAD: '/notifications/unread',
+    UNREAD_COUNT: '/notifications/unread/count',
+    MARK_READ: (id) => `/notifications/${id}/read`,
+    MARK_ALL_READ: '/notifications/read-all',
   },
   POINTS: {
     BALANCE: '/points/balance',
